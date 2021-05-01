@@ -115,6 +115,7 @@ class GitClone:
             pass
 
 if __name__ == "__main__":
+    
     default = "no"
     parser = argparse.ArgumentParser(description='Git Clone Info')
     parser.add_argument('--url', type=str, help='The URL', required=True)
