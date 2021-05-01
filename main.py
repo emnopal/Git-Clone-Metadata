@@ -94,9 +94,9 @@ class GitClone:
             pass
 
     def save(self, show, save):
-        if save in ["0", "no"]:
+        if save in ["0", "no", "False", "false"]:
             self.show_fetch(show)
-        elif save in ["yes", "1", "default_format", "default"]:
+        elif save in ["yes", "1", "default_format", "default", "True", "true"]:
             self.show_fetch(show)
             with open(self.filename_format, 'w') as f:
                 json.dump(self.res.json(), f)
@@ -106,9 +106,9 @@ class GitClone:
                 json.dump(self.res.json(), f)
 
     def shows(self, show, save, clone):
-        if clone in ["0", "no"]:
+        if clone in ["0", "no", "false", "False"]:
             self.save(show, save)
-        elif clone in ["yes", "1"]:
+        elif clone in ["yes", "1", "True", "true"]:
             self.save(show, save)
             os.system(f"git clone {self.url}")
         else:
