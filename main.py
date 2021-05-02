@@ -91,7 +91,7 @@ class GitClone:
         elif show in [show_list[9], "7"]:
             self.fetch_desc()
         else:
-            pass
+            return
 
     def save(self, show, save):
         if save in ["0", "no", "False", "false"]:
@@ -112,19 +112,23 @@ class GitClone:
             self.save(show, save)
             os.system(f"git clone {self.url}")
         else:
-            pass
+            return
+
+class Parse:
+    
+    def parse():
+        default = "no"
+        parser = argparse.ArgumentParser(description='Git Clone Info')
+        parser.add_argument('--url', type=str, help='The URL', required=True)
+        parser.add_argument('--show', type=str, help='Show All', default=default)
+        parser.add_argument('--save', type=str, help='Save to JSON', default=default)
+        parser.add_argument('--clone', type=str, help='Cloning the Repository', default=default)
+        args = parser.parse_args()
+        return args    
+
 
 if __name__ == "__main__":
-    
-    default = "no"
-    parser = argparse.ArgumentParser(description='Git Clone Info')
-    parser.add_argument('--url', type=str, help='The URL', required=True)
-    parser.add_argument('--show', type=str, help='Show All', default=default)
-    parser.add_argument('--save', type=str, help='Save to JSON', default=default)
-    parser.add_argument('--clone', type=str, help='Cloning the Repository', default=default)
 
-    args = parser.parse_args()
-
+    args = Parse.parse()
     git = GitClone(args.url)
-
     git.shows(args.show, args.save, args.clone)
