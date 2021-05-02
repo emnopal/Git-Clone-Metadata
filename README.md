@@ -2,5 +2,5 @@
 Showing metadata when cloning the git repository
 Usage:
 > Install the requirements package
-> Run:
+> by run:
 > ``python setup.py``
